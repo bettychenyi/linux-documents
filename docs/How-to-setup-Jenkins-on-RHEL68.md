@@ -100,7 +100,7 @@ Here, let's use the Jenkins Server itself as a slave (run the job on the same VM
           - ```"Launch method"```: ```"Launch slave agent via SSH"```
                - ```"Host"```: please put the IP of your Jenkins slave (here the slave is on the same VM of your Jenkins Server, then use the same IP Address)
                - ```"Credentials"```, please click ```"Add"``` then click ```"Jenkins"``` to add your username/password, or username/private key which can be used to access your Jenkins slave (here it is the same VM of your Jenkins server). Finish other fields and click ```"Add"``` to add the new credential. Then from ```"Credentials"```, select your new created credential.
-          - ```"Host Key Verification Strategy"```: ```"Non verifying Verification Strategy"```
+               - ```"Host Key Verification Strategy"```: ```"Non verifying Verification Strategy"```
           - Click ```"Save"``` to save this node
      - You will see the new node you just added, is marked as a red cross. Click ```"Launch agent"``` and wait it to complete.
           - Monitor the output and see any failures. If your credential is incorrect, then go to ```"Jenkins Home Page" > "Credentials" > Click your credential name (the latter part, with **** in the string) > Click "Update" to update it > Click "Save" ``` to save your changes.
