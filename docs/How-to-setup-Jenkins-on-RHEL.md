@@ -117,7 +117,7 @@ A Jenkins ```"Job"``` is a set of definations to do something for you. For examp
  
 Let's see how to create a job in Jenkins to do something (run a script) for you:
  
-1) Click ```"New Item"```, then give the name to this item, for example: "InterVM-Latency-Test"
+1) Click ```"New Item"```, then give the name to this item, for example: "VM-Latency-Test"
 2) Check ```"Restrict where this project can be run"```, and then put your Jenkins slave name here (for example, ```"my-slave-on-jenkins"``` node you created above). Ignore the yellow warning here.
 3) ```"Source Code Management"```:
      - Select ```"Git"```, because your source code is managed by git repo;
@@ -138,3 +138,24 @@ Let's see how to create a job in Jenkins to do something (run a script) for you:
 4) Click a history ID from the list, you will go to the *"Build Page"* . From this page, you will see:
      - The test log file if you script produces log file and your job has collected them.
      - Click the ```"Console Output"``` from the left side, and you will see the test execution log.
+
+### Add parameter to your Job
+1) Go to your *"Job Page"*
+2) Click ```"Configure"```
+3) In the section of ```"General"```, check ```"This project is parameterized"```
+4) Then click ```"Add Parameter"```, then select what you want. For example, here we use ```File Parameter``` as example.
+* ```File Parameter```: provide a interface for user to upload a file to Jenkins.
+     1) Choose ```File Parameter```;
+     2) ```"File location"```: the path for the file uploaded by user; (here, let's name this as ```"vm_list"```)
+     3) ```"Description"```: a short sentence to describle the meaning of this parameter.
+* Now, we can refernece the above file parameter by ```"vm_list"```. 
+5) Go to ```"Build"```, add below code to your command line:
+```
+     echo ${vm_list} 
+```
+* Then you run this job again, and see the execution log. You will see this varialble is the file name you uploaded;
+* Then you login to your Jenkins slave, go to the working directory (you can find this directory from the output of ```"pwd"```; for example, ```"/tmp/workspace/VM-Latency-Test"``` is my working directory, where ```"VM-Latency-Test"``` is my job name), you will see a new file ```"vm_list"``` exist there.
+6) Now let's reference this file in your automation. Like below:
+```
+     /home/betty/linux-automation-scripts/network-performance/my_latency_test.sh vm_list vm_test_matrix
+```
