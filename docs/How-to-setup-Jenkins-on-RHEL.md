@@ -125,8 +125,8 @@ Let's see how to create a job in Jenkins to do something (run a script) for you:
 4) ```"Build Environment"```
       - ```"Add timestamps to the Console Output"```
 5) ```"Build"```
-     - ```"Add build step"```, then define what "Command" you want this Jenkins job to run. For example: "ifconfig", or "./myfolder/my-bash-script.sh"
-     Note, when running this experimental job, Jenkins job may say "ifconfig: command not found"; then go back to here to update ifconfig to "/usr/sbin/ifconfig" (specify ifconfig's full path name).
+     - ```"Add build step"```, then define what "Command" you want this Jenkins job to run. For example: ```"ifconfig"```, ```"whoami"```, ```"pwd"``` or ```"./myfolder/my-bash-script.sh"```
+     >>> When running this experimental job, Jenkins job may say ```"ifconfig: command not found"```; then go back to here to update ifconfig to ```"/usr/sbin/ifconfig"``` (specify ifconfig's full path name).
 6) ``` "Post-build Actions"```
      - Select ```"Archive the artifacts"```. You can specify what files need to be archived.
 5) ``` Save``` your job
@@ -138,6 +138,3 @@ Let's see how to create a job in Jenkins to do something (run a script) for you:
 4) Click a history ID from the list, you will go to the *"Build Page"* . From this page, you will see:
      - The test log file if you script produces log file and your job has collected them.
      - Click the ```"Console Output"``` from the left side, and you will see the test execution log.
-     
-     
-   
