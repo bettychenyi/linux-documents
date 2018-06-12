@@ -1,5 +1,6 @@
 ### Prerequisites:
 * Have a VM (or any host) play the Jenkins server role, with Internet connected.
+* Tested on RHEL 7.2.
 
 ### Get JDK8:
 1) Visit this page to download JDK 8: 
