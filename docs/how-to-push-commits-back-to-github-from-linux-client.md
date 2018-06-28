@@ -19,3 +19,56 @@
 
 ## git push your commit to your github repo
 	git push
+	
+## How to changing author info of a patch
+* Create a fresh, bare clone of your repository
+```
+	git clone --bare https://github.com/user/repo.git
+	or: git clone --bare user@your-git-url/repo.git
+	cd repo.git
+```
+* Copy and paste the script, replacing the following variables based on the information you gathered:
+```
+	#!/bin/sh
+
+	git filter-branch --env-filter '
+	OLD_EMAIL="another-email@live.com"
+	CORRECT_NAME="Betty Chen"
+	CORRECT_EMAIL="correct-email@live.com"
+	if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+	then
+	    export GIT_COMMITTER_NAME="$CORRECT_NAME"
+	    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+	fi
+	if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+	then
+	    export GIT_AUTHOR_NAME="$CORRECT_NAME"
+	    export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+	fi
+	' --tag-name-filter cat -- --branches --tags
+```
+* Run this script and check the git history again
+
+* Push the corrected history back
+```
+	git push --force --tags origin 'refs/heads/*'
+```
+
+* Clean up the temporary clone:
+```
+	cd ..
+	rm -rf repo.git
+```
+
+### Error when "Push the corrected history back"
+```
+	fatal: 'origin' does not appear to be a git repository
+	fatal: The remote end hung up unexpectedly
+```
+Then fix it in this way:
+```
+	git remote -v
+	git remote add origin user@your-git-url/repo.git
+	git push --force --tags origin 'refs/heads/*'
+```
+
