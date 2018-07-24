@@ -17,6 +17,15 @@
 	git add .
 	git commit
 
+## How to discard your local change
+	git checkout .
+
+## How to revert your "git add" and keep changes for add again
+	git reset <file>, or git reset
+
+## How to revert to previous commit (and discard local changes)
+	git reset --hard HEAD
+
 ## git push your commit to your github repo
 	git push
 	
