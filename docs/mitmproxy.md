@@ -1,8 +1,12 @@
 <H2> Prerequisite </H2>
 
-  1) This manual is based on CentOS 7.4
+  1) This manual is based on CentOS 7.4 as the proxy OS
   
-  2) Check Python version by ```python --version```. We have to use Python 3.6+
+  2) Check Python version by ```python --version```. We have to use Python 3.6+ on the proxy.
+  
+  3) It is important to understand that: the mitmproxy could be a different computer other than HTTPS client. 
+  
+<H2> Steps MITMproxy </H2>
   
     yum install epel-release
     yum install centos-release-scl
@@ -16,7 +20,7 @@
     yum install gcc
     ./pip3.6 install mitmproxy
 
-Now mitmproxy should be installed. Try it with:
+Now mitmproxy should be installed. Try to run it with:
 
 ```./mitmproxy```
 
@@ -24,7 +28,7 @@ Now mitmproxy should be installed. Try it with:
 
 ```./mitmproxy --set block_global=false```
 
-<H3> Troubleshooting </H3>
+<H3> Troubleshooting on the proxy side </H3>
 
   1) Use "watch -d -n 1 ss -lntu" to monitor the port (by default, mitmproxy open TCP port 8080)
   2) Use "tcpdump -i eth0 -nnvvXSs 1514 port 8080" to capture the traffic on this 8080 port
