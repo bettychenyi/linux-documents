@@ -29,6 +29,12 @@
 ## git push your commit to your github repo
 	git push
 	
+## How to delete/remove/revert last published commit
+	# git rebase -i HEAD~2
+	-> <Delete the 2nd line, and save>
+	-> Successfully rebased and updated refs/heads/master.
+	# git push origin master --force
+		
 ## How to changing author info of a patch
 * Create a fresh, bare clone of your repository
 ```
