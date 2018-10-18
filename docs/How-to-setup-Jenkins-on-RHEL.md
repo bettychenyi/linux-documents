@@ -159,3 +159,24 @@ Let's see how to create a job in Jenkins to do something (run a script) for you:
 ```
      /home/betty/linux-automation-scripts/network-performance/my_latency_test.sh vm_list vm_test_matrix
 ```
+
+
+### Add email notification
+* Use gmail SMTP serviceas as exmaple to send email
+* Configure the Jenkins system:
+     1) Go to: "Jenkins", "Manage Jenkins", "Configure System"
+     2) Go to section of "Extended E-mail Notification"
+     3) Provide below infomation:
+          1) "SMTP server" => "smtp.gmail.com"
+          2) Click "Advance"
+          3) Provide your "User Name" and "Password"
+          4) "SMTP port" => 465
+          5) Provide "Default Recipients", "Reply To List"
+          6)  Keep other fields as default
+* In your Jenkins job:
+     1) Add "Post-build Actions" and select the "Editable Email Notification"
+     2) Edit the "Project Recipient List" with the email addresses. Use "," to split multiple ones
+     3) "Attachments": Please refer here for the exact format: http://ant.apache.org/manual/Types/fileset.html
+     4) "Attach Build Log": Choose one from the list.
+     5) Click "Advanced Settings...", and add "Triggers". Add a "Always" trigger, and "Send To" "Recipient List".
+* You should check your Gmail box to see any warning/error email  from Google SMTP server. Google may warn you that your email box is being authenticated with less secure methods and that has been blocked. In this case, follow the instruction in the email and change your Gmail settings to allow the authentication made by your Jenkins Server.
