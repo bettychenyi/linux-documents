@@ -180,3 +180,11 @@ Let's see how to create a job in Jenkins to do something (run a script) for you:
      4) "Attach Build Log": Choose one from the list.
      5) Click "Advanced Settings...", and add "Triggers". Add a "Always" trigger, and "Send To" "Recipient List".
 * You should check your Gmail box to see any warning/error email  from Google SMTP server. Google may warn you that your email box is being authenticated with less secure methods and that has been blocked. In this case, follow the instruction in the email and change your Gmail settings to allow the authentication made by your Jenkins Server.
+     1) Open your web browser, e.g., Internet Explorer, Safari, Mozilla Firefox, Google Chrome, Opera, etc.
+     2) Go to the www.gmail.com web site.
+     3) Sign into your account.
+     4) At the top right, click the colorful circle containing a capital letter (usually the first letter of your first name).
+     5) In the menu that appears, click "Google Account."
+     6) A new browser tab or window will open.
+     7) Under "Sign-in & security" click "Apps with account access."
+     8) Scroll down and look at the "Allow less secure apps" option on the right. We should set this option to "ON"
