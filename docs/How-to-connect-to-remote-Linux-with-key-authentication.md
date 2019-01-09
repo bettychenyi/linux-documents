@@ -1,6 +1,8 @@
+# How to connect to remote Linux with key authentication
+
 Prerequisite:  all Linux machines use the same login user, for example: betty.
 
-# There could be two scenarios
+## Scenarios
 * A) From Linux A to access a remote Linux B; (see steps from 1 to 4)
 * B) From Windows W to access a remote Linux B by PuTTY. (see step 6)
  
