@@ -2,7 +2,7 @@
 
 ## Installation
 * I used ```Ubuntu 1804``` environment.
-* Need to install ```JDK 1.9+``` and ```Maven 3.6+```
+* Need to install ```JDK 1.8+``` and ```Maven 3.6+```
 
 Please refer to ```how-to-use-citrus-samples.md``` for more infomation about this.
 
