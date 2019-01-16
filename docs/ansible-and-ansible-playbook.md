@@ -78,6 +78,18 @@ Below is an example of the YAML playbook file (```file-copy.yml```):
          dest: /root
 ```
 
+Another example:
+
+```
+- hosts: my_node_02
+  tasks:
+     - name: Copy all files
+       copy: src={{ item }} dest=/root
+       with_fileglob:
+         - /root/bettychen/ansible/*
+
+```
+
 Then let's use ```ansible-playbook``` to run it, like this:
 
 ```
