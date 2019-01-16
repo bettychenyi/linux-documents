@@ -129,6 +129,62 @@ So if you have a browser, you can visit this link to access the Citrus Simualtor
 http://<simulator_IP>:8080
 ```
 
+Note: if the simulator is installed on a VM in a ```resource group``` with ```Load Balancer```, then you need to configure its ```"Inbound NAT rules"``` to make it pass the ```TCP 8080``` traffic to the real backend VM.
 
+## How does this work?
 
+Let's take a look at the code.
 
+In the Simulator github homepage, the readme said that we need to do some thing for ```"As the simulator is a normal Spring boot application we just add a usual main class."```, and ```"In addition to that we should define one to many simulator scenarios that execute when requests are received."```. And then it tells you some piece of code like this:
+
+**"usual main class"**
+
+```
+package com.consol.citrus.simulator;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Simulator {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Simulator.class, args);
+    }
+}
+```
+
+**"test scenario"**
+
+```
+package com.consol.citrus.simulator;
+
+import com.consol.citrus.http.message.HttpMessage;
+import com.consol.citrus.simulator.scenario.*;
+import org.springframework.http.HttpStatus;
+
+@Scenario("DEFAULT_SCENARIO")
+public class DefaultScenario extends AbstractSimulatorScenario {
+
+    @Override
+    public void run(ScenarioDesigner designer) {
+        designer.echo("Default scenario executed!");
+
+        designer.send()
+                .message(new HttpMessage("Welcome to the Citrus simulator")
+                .status(HttpStatus.OK));
+    }
+}
+```
+
+This is very confusing to new people like me. After I have successfully brought up the Sample Simulator online then I came back and looked at its github source code, I understand that above sentences are trying to tell you of **how to start writing new test scenarios to handle your own requests**.
+
+In above example, the source code is here ```"citrus-simulator/simulator-samples/sample-ws/"```. If you go to ```"simulator-samples/sample-ws/src/main/java/com/consol/citrus/simulator/sample/"```, you will see 1 file and 2 folders:
+* ```Simulator.java``` (this is the ```"main class"```)
+* ```scenario``` (```DefaultScenario.java```; ```GoodByeScenario.java```;  
+```GoodNightScenario.java```; ```HelloScenario.java```)
+* ```starter``` (```GoodByeStarter.java```; ```HelloStarter.java```)
+
+That's why you see those entries in the web UI, ```scenario``` Tab (in the example, there are 4 scenarios and 2 starters, which map to the code here). If you open the above Java code, you will see they map to the github homepage instructions exactly.
+
+You surely can add more test scenarios, or handle even more complex test scenarios; but you need to write such Java code to implement that.
