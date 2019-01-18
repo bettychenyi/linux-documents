@@ -14,7 +14,11 @@ cd citrus-simulator
 mvn install spring-boot:run
 ```
 
-In this step, it may compliant the Spring Agent has some problems. Then let's define this plugin in the ```pom.xml```:
+In this step, it may compliant the Spring Agent has some configuration problems.
+```
+[ERROR] No plugin found for prefix 'spring-boot' in the current project and in the plugin groups
+```
+Then let's define this plugin in the ```pom.xml```:
 ```
   <build>
     <pluginManagement>
