@@ -52,7 +52,7 @@ mvn clean install
 
 * Notes on **Ubuntu 1604**: 
 * If you see the failures in the step of compile simulator-ui, ```[ERROR] Failed to execute goal com.github.eirslett:frontend-maven-plugin:1.6:npm (npm run build) on project simulator-ui: Failed to run task: 'npm run build' failed.```, please try to install npm by below command: ```apt install npm```
-* If mvn is not found, please reference it from: ```root@my_vm:~/citrus-simulator# sudo /opt/apache-maven/bin/mvn clean install
+* If mvn is not found, please reference it from: ```root@my_vm:~/citrus-simulator# sudo /opt/apache-maven/bin/mvn clean install```
 
 You may see errors like :
 ```
