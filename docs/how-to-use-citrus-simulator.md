@@ -50,6 +50,8 @@ If you still see errors, then run
 mvn clean install
 ```
 
+* Not, on **Ubuntu 1604**: If you see the failures in the step of compile simulator-ui, ```[ERROR] Failed to execute goal com.github.eirslett:frontend-maven-plugin:1.6:npm (npm run build) on project simulator-ui: Failed to run task: 'npm run build' failed.```, please try to install npm by below command: ```apt install npm```
+
 You may see errors like :
 ```
 Error: Exception thrown by the agent : java.rmi.server.ExportException: Port already in use: 9001; nested exception i                                                                                                                        
