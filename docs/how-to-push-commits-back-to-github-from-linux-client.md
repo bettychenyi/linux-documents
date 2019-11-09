@@ -17,6 +17,19 @@
 	git add .
 	git commit
 
+## How to use git in RHEL 6.7
+```
+[bettychen@betty-rhel67-dev-1 betty]# git clone https://github.com/bettychenyi/linux-documents
+Initialized empty Git repository in /home/betty/linux-documents/.git/
+error:  while accessing https://github.com/bettychenyi/linux-documents/info/refs
+
+fatal: HTTP request failed
+
+```
+* Solution: update nss, curl packages by:
+
+```~$ yum update -y nss curl```
+
 ## How to discard your local change
 	git checkout .
 
