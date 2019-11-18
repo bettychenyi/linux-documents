@@ -7,6 +7,10 @@
 	for example:
 	git remote set-url origin git@github.com:bettychenyi/linux-test-automation.git
 
+## git operations without authentication after git clone
+	Provide the username and token in the https clone URL
+	git clone https://bettychenyi:mytoken111drewfsdfrewt@my-org.visualstudio.com/DefaultCollection/my-team/_git/my-repo
+
 ## Setup your keys
 * Generate your key on you local box by:
 	ssh-keygen -t rsa
