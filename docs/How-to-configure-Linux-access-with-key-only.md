@@ -53,6 +53,8 @@ Now, we can access your remote cloud Linux machine ("my-cloud-vm") from your loc
 Just copy the private key to a local folder in the Windows machine, for exmaple, create a new text file, then copy/paste the private key file content to it, 
 then save it as "betty_id_rsa"
 
+#### 1) Mobaxterm
+
 Open mobaxterm, configure it to login with the key:
 
 1. ```Remote Host```: specify the target VM's IP, here it is "168.10.10.10"
@@ -60,6 +62,16 @@ Open mobaxterm, configure it to login with the key:
 3. In the ```"Advanced SSH settings"``` tab, check ```"User private key"```, then browser the local ssh private key file ("betty_id_rsa").
 
 Now, we can launch this connection with key authentication.
+
+#### 2) Putty
+
+We need to export the private key from this id-rsa pem file, then use it in Putty.
+
+1. Launch "PUTTYGEN"
+2. Click "Load", then choose the file type to "All Files (*.*)", then select the key file "betty_id_rsa"
+3. Click "Save private key" to export the ppk file.
+
+In Putty, load this key from this menu: "Connection" > "SSH" > "Auth" > then browse this private key file from the textbox "Private key file for authentication:".
 
 ### 4. Remove password authentication from the target linux machine.
 
@@ -73,4 +85,9 @@ Then save the sshd_config file and restart the sshd service:
 
 ```sudo service ssh restart```
 
+Now, let's have a test: try to access this target remote VM with username/password:
 
+```
+[betty@my-Linux-terminal ~]$ ssh lisa@168.10.10.10
+Permission denied (publickey).
+```
