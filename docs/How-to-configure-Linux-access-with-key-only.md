@@ -91,3 +91,36 @@ Now, let's have a test: try to access this target remote VM with username/passwo
 [betty@my-Linux-terminal ~]$ ssh lisa@168.10.10.10
 Permission denied (publickey).
 ```
+
+### 5. Troubleshooting
+
+#### 1. "Load key "xxx.ppk": invalid format"
+
+When you get a ```*.pem``` key, you can use PuttyGen to export the ```*.ppk``` key.
+
+But when you use this ppk key in ssh from a Linux terminal, you might see error like:
+
+```
+ssh -i yichen-azureuser.ppk azureuser@x.x.x.x
+
+Load key "yichen-azureuser.ppk": invalid format
+azureuser@x.x.x.x: Permission denied (publickey).
+
+```
+
+If so, you need to convert the key type to openssh format:
+
+```
+puttygen yichen-azureuser.ppk -O private-openssh -o yichen-azureuser-id-rsa
+```
+
+The same, for the public key if you want:
+
+```
+puttygen yichen-azureuser.ppk -O public-openssh  -o yichen-azureuser-id-rsa.pub
+```
+
+Then try it again with:
+```
+ssh -i yichen-azureuser-id-rsa azureuser@x.x.x.x
+```
